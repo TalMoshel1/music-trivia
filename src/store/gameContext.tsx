@@ -15,13 +15,16 @@ export const GameContext = createContext<contextStore>({
   setNewBoard: (board: scoreInterface[]) => {
     return
   },
-  boardResult: []
+  boardResult: null,
+  setNewBoardResult: (newResult: scoreInterface[]|  null) => {
+    return
+}
 });
 
 const GameProvider = ({ children }: { children?: any }) => {
   const [myScore, setMyScore] = useState<null | scoreInterface>(null);
   const [board, setBoard] = useState<null | scoreInterface[]>(null);
-  const [boardResult, setBoardResult] = useState<[] | scoreInterface[]>([])
+  const [boardResult, setBoardResult] = useState<null | scoreInterface[]>([])
   const navigate = useNavigate()
 
   const postMyScore = async (score: scoreInterface) => {
@@ -30,6 +33,10 @@ const GameProvider = ({ children }: { children?: any }) => {
 
   function setNewBoard(newBoard: scoreInterface[]) {
     setBoard(newBoard)
+  }
+
+  function setNewBoardResult(newResult: scoreInterface[]|null) {
+    setBoardResult(newResult)
   }
 
   async function getBoardFromDb() {
@@ -65,11 +72,11 @@ const GameProvider = ({ children }: { children?: any }) => {
     }
   },[board])
 
-  useEffect(()=>{
-    if ( boardResult.length) {
-        navigate('/')
-    }
-  },[boardResult])
+//   useEffect(()=>{
+//     if ( boardResult) {
+//         navigate('/')
+//     }
+//   },[boardResult])
 
 
 
@@ -79,7 +86,7 @@ const GameProvider = ({ children }: { children?: any }) => {
 
 
   return (
-    <GameContext.Provider value={{ myScore, postMyScore, board, getBoardFromDb, boardResult, setNewBoard }}>
+    <GameContext.Provider value={{ myScore, postMyScore, board, getBoardFromDb, boardResult, setNewBoardResult, setNewBoard }}>
       {children}
     </GameContext.Provider>
   );

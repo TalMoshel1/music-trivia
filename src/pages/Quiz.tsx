@@ -8,7 +8,7 @@ import { GameContext } from '../store/gameContext';
 
 
 
-function Quiz({questions, startGame, setStartGame, name}: {questions:  QuestionInterface[],startGame: boolean, setStartGame: (arg: boolean) => void, name: string | undefined }) {
+function Quiz({questions, setStartGame, name}: {questions:  QuestionInterface[], setStartGame: (arg: boolean) => void, name: string | undefined }) {
 const [questionNumber, setQuestionNumber] = useState<number>(0) // 0 - 9
 const [userAnswers, setUserAnswers] = useState<[]|userAnswerInterface[]>([])
 const context = useContext(GameContext)
@@ -60,11 +60,7 @@ useEffect(()=>{
     }
 },[userAnswers])
 
-useEffect(()=>{
-    if(context.boardResult.length) {
-        console.log('result ',context.boardResult)
-    }
-})
+
 
 
   return (

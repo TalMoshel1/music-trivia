@@ -32,7 +32,8 @@ export type contextStore = {
     myScore: scoreInterface | null,
     postMyScore: (score: scoreInterface) => void,
     setNewBoard: (score: scoreInterface[]) => void,
-    boardResult: [] | scoreInterface[],
+    boardResult: null | scoreInterface[],
+    setNewBoardResult: (newBoard: scoreInterface[] | null) => void
     
   }
 
