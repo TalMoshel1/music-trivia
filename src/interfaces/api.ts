@@ -23,7 +23,8 @@ export type scoreInterface = {
     score: number;
     timeStamp: string,
     _id: string;
-    __v: number
+    __v: number,
+    isMe?: boolean
 }
 
 export type contextStore = {

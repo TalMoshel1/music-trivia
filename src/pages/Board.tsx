@@ -7,6 +7,7 @@ import Score from './Score';
 
 function Board({boardResults}: {boardResults: scoreInterface[]}) {
     console.log('boardResult:  ', boardResults)
+
   return (
     <div>
         {boardResults.map((score)=>{

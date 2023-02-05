@@ -60,7 +60,7 @@ const GameProvider = ({ children }: { children?: any }) => {
     if (board) {
         const meInBoard = board.map((score)=>{
             if (score._id === myScore?._id) {
-                score.name === 'you'
+                score.isMe = true
                 return score
             }
             else {

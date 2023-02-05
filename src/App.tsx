@@ -10,6 +10,7 @@ import GameProvider from './store/gameContext'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import "@fontsource/poppins";
+import Button from './elements/Button'
 
 function App({className}: {className?: string}) {
   const [questions, setQuestions] = useState<QuestionInterface[] | []>([])
@@ -17,6 +18,10 @@ function App({className}: {className?: string}) {
   const name = useRef<HTMLInputElement>(null)
   const [startGame, setStartGame] = useState(false)
   const context = useContext(GameContext)
+
+  function setGame() {
+    setStartGame(!startGame)
+  }
 
 
   function reload() {
@@ -79,6 +84,7 @@ width: 100%;
 height: 100%;
 display: flex;
 align-items: center;
+justify-content: center;
 
 .startGame {
     width: 80%;

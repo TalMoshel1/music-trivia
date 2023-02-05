@@ -11,9 +11,9 @@ import { GameContext } from '../store/gameContext';
 
 
 
-function Button({text, color, className}: {text: string, className: string, color: string}) {
+function Button({text, color, className, setStartGame}: {text: string, className: string, color: string, setStartGame: () => void}) {
 
-  return <button className={className}>
+  return <button className={className} onClick={setStartGame}>
         {text}
   </button>
 }

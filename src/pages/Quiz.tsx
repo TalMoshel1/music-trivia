@@ -1,17 +1,22 @@
 import { useEffect, useState, useContext } from 'react'
 import reactLogo from './assets/react.svg'
-import {QuestionInterface, AnswerInterface, userAnswerInterface, scoreInterface} from '../interfaces/api'
+import {QuestionInterface, AnswerInterface, userAnswerInterface} from '../interfaces/api'
 import { useNavigate } from 'react-router-dom'
 import Question from '../elements/Question'
 import GameProvider from '../store/gameContext'
 import { GameContext } from '../store/gameContext';
+import styled from 'styled-components'
 
 
 
-function Quiz({questions, setStartGame, name}: {questions:  QuestionInterface[], setStartGame: (arg: boolean) => void, name: string | undefined }) {
+function Quiz({questions, setStartGame, name, className}: {questions:  QuestionInterface[], setStartGame: (arg: boolean) => void, name: string | undefined, className?: string }) {
 const [questionNumber, setQuestionNumber] = useState<number>(0) // 0 - 9
 const [userAnswers, setUserAnswers] = useState<[]|userAnswerInterface[]>([])
 const context = useContext(GameContext)
+
+useEffect(()=>{
+    console.log(questions)
+},[])
 
 
 async function verifyScores() {
@@ -35,6 +40,7 @@ async function verifyScores() {
         })
          return res.json()
       }).then((res)=>{
+        console.log('my score: ', res)
         context.postMyScore(res)
       })
 }
@@ -64,12 +70,15 @@ useEffect(()=>{
 
 
   return (
-    <div>
+    <div className={className}>
             {questions.length &&<Question question={questions[questionNumber]} getNextQuestion={getNextQuestion} saveUserAnswer={saveUserAnswer}></Question>}
 
     </div>
-       
   )
         }
 
-export default Quiz
+export default styled(Quiz)`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+`
