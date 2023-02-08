@@ -1,21 +1,65 @@
-import { useEffect, useState, useContext } from 'react'
-import {QuestionInterface, AnswerInterface, userAnswerInterface, scoreInterface} from '../interfaces/api'
-import { GameContext } from '../store/gameContext';
-import Score from './Score';
+import { useEffect, useState, useContext } from "react";
+import styled from "styled-components";
+import {
+  QuestionInterface,
+  AnswerInterface,
+  userAnswerInterface,
+  scoreInterface,
+} from "../interfaces/api";
+import { GameContext } from "../store/gameContext";
+import Score from "./Score";
 
+function Board({ boardResults, className, newGame }: { boardResults: scoreInterface[], className?: string, newGame: () => void }) {
+  console.log("boardResult:  ", boardResults);
 
+  function reload() {
+    return window.location.reload();
+  }
 
-function Board({boardResults}: {boardResults: scoreInterface[]}) {
-    console.log('boardResult:  ', boardResults)
-
-  return (
-    <div>
-        {boardResults.map((score)=>{
-            return <Score score={score}></Score>
+  return <div className={className}>
+      <h1 className='bold'>SCORE BOARD</h1>
+      <div className='scoresParent'>
+        {boardResults.map((score) => {
+          return <Score score={score}></Score>;
         })}
-    </div>
+      </div>
+      <button onClick={newGame}>RESET</button>
+        </div>
 
-  )
-        }
+}
 
-export default Board
+export default styled(Board) `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    min-width: 150px;
+    gap: 3.125em;
+
+    .bold {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    button {
+        padding: 15px;
+        border: 2px solid black;
+        background-color: #C6B9FF; 
+        max-width: 200px;
+        width: 100%;
+    }
+
+
+
+    .scoresParent {
+        width: 40%;
+        min-width: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+    }
+
+    h1 { 
+        text-align: center;
+    }
+
+`

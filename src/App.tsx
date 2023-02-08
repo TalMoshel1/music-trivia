@@ -19,9 +19,6 @@ function App({className}: {className?: string}) {
   const [startGame, setStartGame] = useState(false)
   const context = useContext(GameContext)
 
-  function setGame() {
-    setStartGame(!startGame)
-  }
 
 
   function reload() {
@@ -31,6 +28,7 @@ function App({className}: {className?: string}) {
 useEffect(()=>{
     if (context.boardResult?.length) {
         setQuestions(()=>{
+            console.log('questions empty')
             return []
         })
         console.log('why its printin this id boardResult is null')
@@ -67,13 +65,12 @@ useEffect(()=>{
             </div> }
 
 
-        {(startGame && questions) && 
+        {(startGame && !!questions.length) && 
             <Quiz questions={questions} setStartGame={setStartGame} name={name.current?.value}></Quiz>
             }
 
-        {(startGame && context.boardResult?.length) && <>
-            <Board boardResults={context.boardResult}></Board>
-            <button onClick={()=>{setStartGame(false); reload()}}>startGame</button>
+        {(startGame && !!context.boardResult?.length ) && <>
+            <Board newGame={()=>{setStartGame(false); reload()}} boardResults={context.boardResult}></Board>
             </>}
   
         </div>

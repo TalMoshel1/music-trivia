@@ -71,8 +71,7 @@ useEffect(()=>{
 
   return (
     <div className={className}>
-            {questions.length &&<Question question={questions[questionNumber]} getNextQuestion={getNextQuestion} saveUserAnswer={saveUserAnswer}></Question>}
-
+            {questions.length && <Question question={questions[questionNumber]} getNextQuestion={getNextQuestion} saveUserAnswer={saveUserAnswer}></Question>}
     </div>
   )
         }
@@ -81,4 +80,5 @@ export default styled(Quiz)`
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 80%;
 `
