@@ -1,6 +1,3 @@
-// import { Types } from 'mongoose';
-
-
 export interface QuestionInterface {
     body: string;
     answers: AnswerInterface[] ;
@@ -34,7 +31,8 @@ export type contextStore = {
     postMyScore: (score: scoreInterface) => void,
     setNewBoard: (score: scoreInterface[]) => void,
     boardResult: null | scoreInterface[],
-    setNewBoardResult: (newBoard: scoreInterface[] | null) => void
+    setNewBoardResult: (newBoard: scoreInterface[] | null) => void,
+    playSound: (url: string) => void
     
   }
 

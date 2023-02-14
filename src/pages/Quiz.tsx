@@ -8,15 +8,11 @@ import { GameContext } from '../store/gameContext';
 import styled from 'styled-components'
 
 
-
 function Quiz({questions, setStartGame, name, className}: {questions:  QuestionInterface[], setStartGame: (arg: boolean) => void, name: string | undefined, className?: string }) {
 const [questionNumber, setQuestionNumber] = useState<number>(0) // 0 - 9
 const [userAnswers, setUserAnswers] = useState<[]|userAnswerInterface[]>([])
 const context = useContext(GameContext)
 
-useEffect(()=>{
-    console.log(questions)
-},[])
 
 
 async function verifyScores() {
@@ -40,7 +36,6 @@ async function verifyScores() {
         })
          return res.json()
       }).then((res)=>{
-        console.log('my score: ', res)
         context.postMyScore(res)
       })
 }
@@ -48,7 +43,6 @@ async function verifyScores() {
 function getNextQuestion() {
     if (questionNumber + 1 <= 9) {
         setQuestionNumber((prev: number)=>{
-            console.log(prev + 1)
             return prev+ 1
         })
     }
@@ -80,5 +74,5 @@ export default styled(Quiz)`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 80%;
+        width: 100%;
 `

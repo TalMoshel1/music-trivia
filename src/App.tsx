@@ -28,19 +28,12 @@ function App({className}: {className?: string}) {
 useEffect(()=>{
     if (context.boardResult?.length) {
         setQuestions(()=>{
-            console.log('questions empty')
             return []
         })
-        console.log('why its printin this id boardResult is null')
-        console.log(context.boardResult)
-    } else {
-        console.log('boardResult is not null')
+
     }
 },[context.boardResult])
 
-  useEffect(()=>{
-    console.log('start game: ', startGame)
-    }, [startGame])
 
   useEffect(()=>{
         fetch(getQuestionUrl)
@@ -51,10 +44,6 @@ useEffect(()=>{
             setQuestions(res)  
         })
   },[])
-
-  useEffect(()=>{
-    console.log('questions: ', questions)
-  },[questions])
 
 
   return <div className={className}>

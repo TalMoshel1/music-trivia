@@ -34,7 +34,7 @@ export default styled(Board) `
     align-items: center;
     width: 80%;
     min-width: 150px;
-    gap: 3.125em;
+    gap: 1.25em;
 
     .bold {
         font-weight: bold;

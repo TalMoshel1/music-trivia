@@ -18,6 +18,9 @@ export const GameContext = createContext<contextStore>({
   boardResult: null,
   setNewBoardResult: (newResult: scoreInterface[]|  null) => {
     return
+},
+playSound: (url: string) => {
+    return
 }
 });
 
@@ -26,6 +29,14 @@ const GameProvider = ({ children }: { children?: any }) => {
   const [board, setBoard] = useState<null | scoreInterface[]>(null);
   const [boardResult, setBoardResult] = useState<null | scoreInterface[]>([])
   const navigate = useNavigate()
+
+  const audio = new Audio();
+  
+
+  const playSound = (soundFile: string) => {
+        audio.src = soundFile;
+        audio.play();
+  }
 
   const postMyScore = async (score: scoreInterface) => {
     setMyScore(score);
@@ -67,26 +78,15 @@ const GameProvider = ({ children }: { children?: any }) => {
                 return score
             }
         })
-        console.log('meInBoard length', meInBoard.length )
         setBoardResult(meInBoard)
     }
   },[board])
-
-//   useEffect(()=>{
-//     if ( boardResult) {
-//         navigate('/')
-//     }
-//   },[boardResult])
-
-
-
-
 
 
 
 
   return (
-    <GameContext.Provider value={{ myScore, postMyScore, board, getBoardFromDb, boardResult, setNewBoardResult, setNewBoard }}>
+    <GameContext.Provider value={{ myScore, postMyScore, board, getBoardFromDb, boardResult, setNewBoardResult, setNewBoard, playSound }}>
       {children}
     </GameContext.Provider>
   );
