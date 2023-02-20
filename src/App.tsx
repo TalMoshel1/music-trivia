@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
-import '/App.css'
+import './App.css'
 import {QuestionInterface, scoreInterface} from './interfaces/api'
 import Quiz from './pages/Quiz'
 import {GameContext} from './store/gameContext'
