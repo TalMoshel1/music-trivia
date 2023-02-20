@@ -39,11 +39,13 @@ function Question({
 
   useEffect(() => {
     const mutatedQuestion = question.body.replaceAll(" ", "+")
+    console.log(mutatedQuestion)
     setQuestionAudio(`https://music-trivia-audio.s3.eu-west-1.amazonaws.com/${mutatedQuestion}.aac`)
   }, [question]);
 
   useEffect(()=>{
     if(questionAudio && numQuestion < 11){
+        console.log('sopuse to play')
         context.playSound(questionAudio)
     }
   },[questionAudio])

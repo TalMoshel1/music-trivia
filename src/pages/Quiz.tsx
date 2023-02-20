@@ -16,7 +16,7 @@ const context = useContext(GameContext)
 
 
 async function verifyScores() {
-    fetch('http://localhost:3000/api/score', {
+    fetch('https://music-trivia.onrender.com/api/score', {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',

@@ -14,7 +14,7 @@ import Button from './elements/Button'
 
 function App({className}: {className?: string}) {
   const [questions, setQuestions] = useState<QuestionInterface[] | []>([])
-  const getQuestionUrl = `http://localhost:3000/api/question`;
+  const getQuestionUrl = `https://music-trivia.onrender.com/api/question`;
   const name = useRef<HTMLInputElement>(null)
   const [startGame, setStartGame] = useState(false)
   const context = useContext(GameContext)

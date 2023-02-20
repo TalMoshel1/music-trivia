@@ -36,6 +36,7 @@ const GameProvider = ({ children }: { children?: any }) => {
   const playSound = (soundFile: string) => {
         audio.src = soundFile;
         audio.play();
+        console.log('play sound')
   }
 
   const postMyScore = async (score: scoreInterface) => {
@@ -51,7 +52,7 @@ const GameProvider = ({ children }: { children?: any }) => {
   }
 
   async function getBoardFromDb() {
-    fetch("http://localhost:3000/api/score")
+    fetch("https://music-trivia.onrender.com/api/score")
       .then((res) => {
         return res.json();
       })
