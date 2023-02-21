@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-create-context": "^1.0.2",
     "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
     "react-router-dom": "^6.7.0",
     "styled-components": "^5.3.6",
     "use-context": "^0.0.1"
