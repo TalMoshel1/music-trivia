@@ -6,6 +6,11 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
+        output: {
+            globals: {
+              'react-is': 'ReactIs'
+            }
+          },
       external: [
         /^node:.*/,
         'react-is'
