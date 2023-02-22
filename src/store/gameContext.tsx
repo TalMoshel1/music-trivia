@@ -1,5 +1,5 @@
 import { scoreInterface, contextStore } from "../interfaces/api";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useRef, useState } from "react";
 import  App  from '../App'
 import { Navigate, useLocation, useParams, useNavigate } from "react-router-dom";
 
@@ -30,13 +30,13 @@ const GameProvider = ({ children }: { children?: any }) => {
   const [boardResult, setBoardResult] = useState<null | scoreInterface[]>([])
   const navigate = useNavigate()
 
-  const audio = new Audio();
-  
+  const audioRef = useRef(new Audio())
 
   const playSound = (soundFile: string) => {
-        audio.src = soundFile;
-        audio.play();
-        console.log('play sound')
+    const audio = audioRef.current;
+    audio.src = soundFile;
+    audio.play();
+    console.log('play sound')
   }
 
   const postMyScore = async (score: scoreInterface) => {

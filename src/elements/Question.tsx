@@ -40,7 +40,7 @@ function Question({
   useEffect(() => {
     const mutatedQuestion = question.body.replaceAll(" ", "+")
     console.log(mutatedQuestion)
-    setQuestionAudio(`https://music-trivia-audio.s3.eu-west-1.amazonaws.com/${mutatedQuestion}.aac`)
+    setQuestionAudio(`https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedQuestion}.aac`)
   }, [question]);
 
   useEffect(()=>{
@@ -81,7 +81,7 @@ function Question({
                             setAnswerClicked(true)
                       }
                       const mutatedAnswer = answer.body.replaceAll(' ', "+")
-                      const answerAudio = `https://music-trivia-audio.s3.eu-west-1.amazonaws.com/${mutatedAnswer}.aac`
+                      const answerAudio = `https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedAnswer}.aac`
                       console.log(answerAudio)
                       setAnswerAudio(answerAudio)
                       userAnswer.current = answer;
