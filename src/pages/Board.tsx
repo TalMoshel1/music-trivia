@@ -11,6 +11,12 @@ import Score from "./Score";
 
 function Board({ boardResults, className, newGame }: { boardResults: scoreInterface[], className?: string, newGame: () => void }) {
   console.log("boardResult:  ", boardResults);
+  const context = useContext(GameContext)
+  
+
+  useEffect(()=>{
+    context.playSound('')
+  })
 
   function reload() {
     return window.location.reload();
