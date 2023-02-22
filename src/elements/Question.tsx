@@ -171,7 +171,7 @@ export default styled(Question)`
   .answer {
     padding: 0.9em;
     border: 2px solid black;
-    width: 25%;
+    width: 30%;
     margin: 0.3125em;
     display: flex;
     justify-content: center;
