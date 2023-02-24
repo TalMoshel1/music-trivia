@@ -41,6 +41,7 @@ useEffect(()=>{
             return res.json()
         })
         .then((res)=>{
+            console.log(res)
             setQuestions(res)  
         })
   },[])
