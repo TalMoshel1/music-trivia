@@ -3,6 +3,8 @@
 
 This is a Trivia game in the subject of music theory. I built it for fun and practice.
 
+Come and play!: https://music-trivia-frontend.onrender.com/
+
 ## Technologies
 
 The application utilize:
@@ -159,7 +161,7 @@ Start the server
     
 feel free to conact me in linkedin: https://www.linkedin.com/in/tal-moshel/ .
     
-come and play!: https://music-trivia-frontend.onrender.com/
+Come and play!: https://music-trivia-frontend.onrender.com/
 
 
 
