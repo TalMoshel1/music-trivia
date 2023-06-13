@@ -26,10 +26,10 @@ The application utilize:
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Example Color | ![#C6B9FF](https://via.placeholder.com/10/C6B9FF?text=+) #C6B9FF |
-| Example Color | ![#C6B9FF](https://via.placeholder.com/10/f8f8f8?text=+) #C6B9FF |
-| Example Color | ![##ffc700](https://via.placeholder.com/10/ffc700?text=+) #ffc700 |
-| Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+| Purple | ![#C6B9FF](https://via.placeholder.com/10/C6B9FF?text=+) #C6B9FF |
+| White | ![#C6B9FF](https://via.placeholder.com/10/f8f8f8?text=+) #C6B9FF |
+| Yellow | ![##ffc700](https://via.placeholder.com/10/ffc700?text=+) #ffc700 |
+| Green | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
 
 ## Documentation
 
