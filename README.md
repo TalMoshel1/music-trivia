@@ -1,6 +1,38 @@
 
 # Music-Trivia 
 
+This is a Trivia game in the subject of music theory. I built it for fun and practice
+
+## Technologies
+
+The application utilize:
+
+-   React app built with Vite for better peformance than create-react-app.
+-   TypeScript for better readebility and less buggs and annoying buggs.
+-   styled-components for easier way to write CSS.
+-   React hooks (useState, useEffect and createContext)
+-   react-router-dom
+-   global Audio() object for sounds
+
+
+## Demo
+
+![music trivia](https://raw.githubusercontent.com/TalMoshel1/music-trivia/main/musicDemo.gif)
+
+
+
+
+## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Example Color | ![#C6B9FF](https://via.placeholder.com/10/C6B9FF?text=+) #C6B9FF |
+| Example Color | ![#C6B9FF](https://via.placeholder.com/10/f8f8f8?text=+) #C6B9FF |
+| Example Color | ![##ffc700](https://via.placeholder.com/10/ffc700?text=+) #ffc700 |
+| Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+
+## Documentation
+
 main.tsx returns the Routes to the application. the outer Route is
 Home.tsx (its return the 'Outlet', being wrapped by a createContext variable) and the inner route is App.tsx.
 
@@ -52,28 +84,6 @@ Board.tsx component does two things:
     return window.location.reload();
   }
   ```
-
-## Demo
-
-![music trivia](https://raw.githubusercontent.com/TalMoshel1/music-trivia/main/musicDemo.gif)
-
-
-## Acknowledgements
-
- - Thanks To Elior Tabeka and Alon Dai who assisted me to overcome the challenges in this project 
-
-
-## Color Reference
-
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Example Color | ![#C6B9FF](https://via.placeholder.com/10/C6B9FF?text=+) #C6B9FF |
-| Example Color | ![#C6B9FF](https://via.placeholder.com/10/f8f8f8?text=+) #C6B9FF |
-| Example Color | ![##ffc700](https://via.placeholder.com/10/ffc700?text=+) #ffc700 |
-| Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
-
-
-
 
 ## API Reference
     
@@ -139,5 +149,17 @@ Start the server
 ```bash
   npm run dev
 ```
+    
+    
+## Acknowledgements
+
+ - Thanks To Elior Tabeka and Alon Dai who assisted me to overcome the challenges in this project.
+    
+## Contact    
+    
+feel free to conact me in linkedin: https://www.linkedin.com/in/tal-moshel/
+    
+come and play!: https://music-trivia-frontend.onrender.com/
+
 
 
