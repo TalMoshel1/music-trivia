@@ -1,7 +1,7 @@
 
 # Music-Trivia 
 
-This is a Trivia game in the subject of music theory. I built it for fun and practice
+This is a Trivia game in the subject of music theory. I built it for fun and practice.
 
 ## Technologies
 
@@ -10,9 +10,9 @@ The application utilize:
 -   React app built with Vite for better peformance than create-react-app.
 -   TypeScript for better readebility and less buggs and annoying buggs.
 -   styled-components for easier way to write CSS.
--   React hooks (useState, useEffect and createContext)
--   react-router-dom
--   global Audio() object for sounds
+-   React hooks (useState, useEffect and createContext).
+-   react-router-dom.
+-   global Audio() object for sounds.
 
 
 ## Demo
@@ -157,7 +157,7 @@ Start the server
     
 ## Contact    
     
-feel free to conact me in linkedin: https://www.linkedin.com/in/tal-moshel/
+feel free to conact me in linkedin: https://www.linkedin.com/in/tal-moshel/ .
     
 come and play!: https://music-trivia-frontend.onrender.com/
 
