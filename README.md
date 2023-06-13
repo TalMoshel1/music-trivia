@@ -94,7 +94,6 @@ Board.tsx component does two things:
 | `body`    | `string` | **Required**. the body of the question |
 | `answers` | `array`  | **Required**. Id of item to fetch      |
 | `answerId`| `number` | **Required**. The correct answer's id  |
-| `id`      | `string` | **Required**. Id of item to fetch      |
 
 #### Calc questions answers
 
