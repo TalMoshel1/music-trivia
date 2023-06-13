@@ -92,7 +92,7 @@ Board.tsx component does two things:
 | Parameter | Type     | Description                            |
 | :-------- | :------- | :--------------------------------      |
 | `body`    | `string` | **Required**. the body of the question |
-| `answers` | `array`  | **Required**. Id of item to fetch      |
+| `answers` | `array`  | **Required**. must contain id and body to every object of an answer, answers's length must be 4     |
 | `answerId`| `number` | **Required**. The correct answer's id  |
 
 #### Calc questions answers
