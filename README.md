@@ -76,7 +76,7 @@ Board.tsx component does two things:
 
 
 ## API Reference
-
+    
 #### Get 10 questions
 
 ```http
@@ -89,12 +89,12 @@ Board.tsx component does two things:
   POST /api/question
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-| `id`      | `string` | **Required**. Id of item to fetch |
-| `id`      | `string` | **Required**. Id of item to fetch |
-| `id`      | `string` | **Required**. Id of item to fetch |
+| Parameter | Type     | Description                            |
+| :-------- | :------- | :--------------------------------      |
+| `body`    | `string` | **Required**. the body of the question |
+| `answers` | `array`  | **Required**. Id of item to fetch      |
+| `answerId`| `number` | **Required**. The correct answer's id  |
+| `id`      | `string` | **Required**. Id of item to fetch      |
 
 #### Calc questions answers
 
@@ -113,7 +113,7 @@ Board.tsx component does two things:
 ```http
   GET /api/score
 ```
-  
+
   
 ## Run Locally
 
