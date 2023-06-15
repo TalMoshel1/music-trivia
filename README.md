@@ -154,7 +154,7 @@ Start the server
     
 ## Acknowledgements
 
- - Thanks To ![Elior Tabeka](https://github.com/EliorTabeka) and Alon Dai who assisted me to overcome the challenges in this project.
+ - Thanks To [Elior Tabeka](https://github.com/EliorTabeka) and Alon Dai who assisted me to overcome the challenges in this project.
     
 ## Contact    
     
