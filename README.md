@@ -77,7 +77,7 @@ The Quiz.tsx component does three things:
 
 Board.tsx component does two things:
 
-- getting the boardResult as a child from Quis.tsx. it return in Js logic, a map function that iterates throw the scores, return a <Score> component to each score.
+- getting the boardResult as a child from Quiz.tsx. it return in JS logic, a map function that iterates throw the scores, return a <Score> component to each score.
 
 - button to start over a new game, using full reload of the application with:
 ```
