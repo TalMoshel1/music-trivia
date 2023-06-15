@@ -29,7 +29,7 @@ The application utilize:
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | Purple | ![#C6B9FF](https://via.placeholder.com/10/C6B9FF?text=+) #C6B9FF |
-| White | ![#C6B9FF](https://via.placeholder.com/10/f8f8f8?text=+) #C6B9FF |
+| Off-white | ![#C6B9FF](https://via.placeholder.com/10/f8f8f8?text=+) #C6B9FF |
 | Yellow | ![##ffc700](https://via.placeholder.com/10/ffc700?text=+) #ffc700 |
 | Green | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
 
