@@ -22,15 +22,19 @@ function Board({ boardResults, className, newGame }: { boardResults: scoreInterf
     return window.location.reload();
   }
 
-  return <div className={className}>
-      <h1 className='bold'>SCORE BOARD</h1>
-      <div className='scoresParent'>
-        {boardResults.map((score) => {
-          return <Score score={score}></Score>;
-        })}
+  if (context.boardResult !== null && context.boardResult?.length > 1) {
+    return <div className={className}>
+    <h1 className='bold'>SCORE BOARD</h1>
+    <div className='scoresParent'>
+      {boardResults.map((score) => {
+        return <Score score={score}></Score>;
+      })}
+    </div>
+    <button onClick={newGame}>RESET</button>
       </div>
-      <button onClick={newGame}>RESET</button>
-        </div>
+  }
+
+
 
 }
 

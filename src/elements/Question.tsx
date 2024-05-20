@@ -1,12 +1,18 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useContext,
+  LabelHTMLAttributes,
+} from "react";
 import {
   QuestionInterface,
   AnswerInterface,
   userAnswerInterface,
 } from "../interfaces/api";
-import styled from "styled-components";
-import { GameContext } from '../store/gameContext';
-
+import styled, { keyframes } from "styled-components";
+import { GameContext } from "../store/gameContext";
+import "../App.css";
 
 function Question({
   question,
@@ -21,83 +27,109 @@ function Question({
 }) {
   const [begining, setBegining] = useState("");
   const [end, setEnd] = useState("");
-  const [questionAudio, setQuestionAudio] = useState("")
-  const [answerAudio, setAnswerAudio] = useState('')
+  const [questionAudio, setQuestionAudio] = useState("");
+  const [answerAudio, setAnswerAudio] = useState("");
   const [answerClicked, setAnswerClicked] = useState<boolean>(false);
-  const [numQuestion, setNumQuestion] = useState(1)
+  const [numQuestion, setNumQuestion] = useState(1);
+  const [isQuestionBodyScaledUp, setIsQuestionBodyScaledUp] = useState(false);
+
   const userAnswer = useRef<any>();
-  const context = useContext(GameContext)
+  const answerToBeFocused = useRef<any>();
 
-
+  const context = useContext(GameContext);
 
   useEffect(() => {
-    const questionBodyWords = question.body.split(" ");
-    const questionEnd = questionBodyWords.splice(-2);
-    setBegining(questionBodyWords.join(" "));
-    setEnd(questionEnd.join(" "));
+    if (
+      answerToBeFocused.current &&
+      answerToBeFocused.current.classList.contains("focused")
+    ) {
+      answerToBeFocused.current.focus();
+    }
+  }, [
+    answerToBeFocused,
+    answerToBeFocused.current && answerToBeFocused.current.classList,
+  ]);
+
+  useEffect(() => {
+    const questionBodyWords = question?.body.split(" ");
+    const questionEnd = questionBodyWords?.splice(-2);
+    setBegining(questionBodyWords?.join(" "));
+    setEnd(questionEnd?.join(" "));
   });
 
   useEffect(() => {
-    const mutatedQuestion = question.body.replaceAll(" ", "+")
-    console.log(mutatedQuestion)
-    setQuestionAudio(`https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedQuestion}.aac`)
+    const mutatedQuestion = question?.body.replaceAll(" ", "+");
+    console.log(mutatedQuestion);
+    setQuestionAudio(
+      `https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedQuestion}.aac`
+    );
   }, [question]);
 
-  useEffect(()=>{
-    if(questionAudio && numQuestion < 11){
-        console.log('sopuse to play')
-        context.playSound(questionAudio)
+  useEffect(() => {
+    if (questionAudio && numQuestion < 11) {
+      console.log("sopuse to play");
+      context.playSound(questionAudio);
     }
-  },[questionAudio])
+  }, [questionAudio]);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (answerAudio) {
-        context.playSound(answerAudio)
+      context.playSound(answerAudio);
     }
-  },[answerAudio])
-
+  }, [answerAudio]);
 
   return (
     <section className={className}>
       {begining && end && (
         <>
-          <div className="twoAxisCenter">
+          <div
+            className={`twoAxisCenter ${
+              isQuestionBodyScaledUp && "isQuestionBodyScaledUp"
+            }`}
+          >
             <h2>{begining}</h2>
             <strong className="bold">{end}</strong>
           </div>
 
-            <form>
-              {question.answers.map((answer: AnswerInterface, i) => {
-                return  <>
-                <input
-                className="input"
-                type="radio"
-                id={`${answer.answerId}`}
-                name={`${question._id}`}
-                value={`${answer.answerId}`}
-              />
-              <label htmlFor={`${answer.answerId}`} className="answer" onClick={() => {
+          <form>
+            {question?.answers.map((answer: AnswerInterface, i) => {
+              return (
+                <>
+                  <input
+                    ref={answerToBeFocused}
+                    className={`input ${i == 0 && "focused"}`}
+                    type="radio"
+                    id={`${answer.answerId}`}
+                    name={`${question._id}`}
+                    value={`${answer.answerId}`}
+                  />
+                  <label
+                    htmlFor={`${answer.answerId}`}
+                    className="answer"
+                    onClick={() => {
                       if (!answerClicked) {
-                            setAnswerClicked(true)
+                        setAnswerClicked(true);
                       }
-                      const mutatedAnswer = answer.body.replaceAll(' ', "+")
-                      const answerAudio = `https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedAnswer}.aac`
-                      console.log(answerAudio)
-                      setAnswerAudio(answerAudio)
+                      const mutatedAnswer = answer.body.replaceAll(" ", "+");
+                      const answerAudio = `https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedAnswer}.aac`;
+                      console.log(answerAudio);
+                      setAnswerAudio(answerAudio);
                       userAnswer.current = answer;
-                    }}>
-                {answer.body}
-              </label>
-              </>
-                
-              })}
-            </form>
+                    }}
+                  >
+                    {answer.body}
+                  </label>
+                </>
+              );
+            })}
+          </form>
 
           <button
-            className={answerClicked ? 'active': 'unactive'}
+            className={answerClicked ? "active" : "unactive"}
             onClick={() => {
               {
                 if (userAnswer.current) {
+                  setIsQuestionBodyScaledUp(false);
                   saveUserAnswer({
                     questionId: question._id,
                     answerId: userAnswer.current.answerId,
@@ -106,17 +138,20 @@ function Question({
                     'input[type="radio"]'
                   );
                   const inputArray = Array.from(inputElements);
-                  inputArray.forEach((input: any)=>{
-                        input.checked = false
-                  })
-                  userAnswer.current = undefined
-                  setAnswerClicked(false)
-                  setAnswerAudio('')
-                  setNumQuestion((prev)=>{
-                    return prev + 1
-                  })
+                  inputArray.forEach((input: any) => {
+                    input.checked = false;
+                  });
+                  userAnswer.current = undefined;
+                  setAnswerClicked(false);
+                  setAnswerAudio("");
+                  setNumQuestion((prev) => {
+                    return prev + 1;
+                  });
                   getNextQuestion();
+                  return;
                 }
+                console.log("scaling up");
+                setIsQuestionBodyScaledUp(true);
               }
             }}
           >
@@ -127,6 +162,18 @@ function Question({
     </section>
   );
 }
+
+const scaleUpDown = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 
 export default styled(Question)`
   display: flex;
@@ -140,7 +187,9 @@ export default styled(Question)`
     padding: 0.625em;
   }
 
-  h2, strong, label {
+  h2,
+  strong,
+  label {
     text-align: center;
   }
 
@@ -166,8 +215,6 @@ export default styled(Question)`
     justify-content: center;
   }
 
-
-
   .answer {
     padding: 0.9em;
     border: 2px solid black;
@@ -175,6 +222,7 @@ export default styled(Question)`
     margin: 0.3125em;
     display: flex;
     justify-content: center;
+    cursor: pointer;
   }
   .clickedAnswer {
     background-color: #5552fe;
@@ -198,17 +246,18 @@ export default styled(Question)`
     background-color: transparent;
     max-width: 200px;
     width: 100%;
-    margin-top:  0.9375em;
+    margin-top: 0.9375em;
+    cursor: pointer;
   }
-    button.active {
-        background-color: #c6b9ff;
-    }
+  button.active {
+    background-color: #c6b9ff;
+  }
 
   input[type="radio"]:checked + label {
-    background-color: #5552FE;
+    background-color: #5552fe;
   }
 
   input[type="radio"]:checked + button {
-    background-color: black
+    background-color: black;
   }
 `;
