@@ -6,8 +6,7 @@ import {QuestionInterface, AnswerInterface, userAnswerInterface, scoreInterface}
 
 function Score({score, className}: {score: scoreInterface, className?: string }) {
 
-    console.log(score.isMe)
-    console.log(score.name)
+
 
   return <section className={className}>{
         score.isMe?

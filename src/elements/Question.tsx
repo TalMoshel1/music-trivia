@@ -59,7 +59,6 @@ function Question({
 
   useEffect(() => {
     const mutatedQuestion = question?.body.replaceAll(" ", "+");
-    console.log(mutatedQuestion);
     setQuestionAudio(
       `https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedQuestion}.aac`
     );
@@ -67,7 +66,6 @@ function Question({
 
   useEffect(() => {
     if (questionAudio && numQuestion < 11) {
-      console.log("sopuse to play");
       context.playSound(questionAudio);
     }
   }, [questionAudio]);
@@ -112,7 +110,6 @@ function Question({
                       }
                       const mutatedAnswer = answer.body.replaceAll(" ", "+");
                       const answerAudio = `https://music-trivia.s3.eu-central-1.amazonaws.com/${mutatedAnswer}.aac`;
-                      console.log(answerAudio);
                       setAnswerAudio(answerAudio);
                       userAnswer.current = answer;
                     }}
@@ -150,7 +147,6 @@ function Question({
                   getNextQuestion();
                   return;
                 }
-                console.log("scaling up");
                 setIsQuestionBodyScaledUp(true);
               }
             }}

@@ -41,7 +41,6 @@ const GameProvider = ({ children }: { children?: any }) => {
     const audio = audioRef.current;
     audio.src = soundFile;
     audio.play();
-    console.log("play sound");
   };
 
   const postMyScore = async (score: scoreInterface) => {
@@ -57,14 +56,11 @@ const GameProvider = ({ children }: { children?: any }) => {
   }
 
   async function getBoardFromDb() {
-    fetch(
-      "https://music-trivia.onrender.com/api/score"
-    ) /*https://music-trivia.onrender.com */
+    fetch("https://music-trivia.onrender.com/api/score")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log("board: ", board);
         setNewBoard(data);
       });
   }

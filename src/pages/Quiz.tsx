@@ -46,7 +46,6 @@ function Quiz({
 
   function getNextQuestion() {
     if (questionNumber + 1 <= 8) {
-      console.log("question number: ", questionNumber);
       setQuestionNumber((prev: number) => prev + 1);
     }
   }
