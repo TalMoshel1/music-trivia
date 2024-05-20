@@ -11,7 +11,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 function App({ className }: { className?: string }) {
   const [questions, setQuestions] = useState<QuestionInterface[] | []>([]);
-  const getQuestionUrl = `http://localhost:3000/api/question`; /*http://localhost:3000 http://localhost:3000*/
+  const getQuestionUrl = `https://music-trivia.onrender.com/api/question`; /*https://music-trivia.onrender.com https://music-trivia.onrender.com*/
   const name = useRef<HTMLInputElement>(null);
   const [startGame, setStartGame] = useState(false);
   const context = useContext(GameContext);

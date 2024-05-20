@@ -11,13 +11,18 @@ interface QuizProps {
   className?: string;
 }
 
-function Quiz({ questions, setStartGame, name, className }: QuizProps): JSX.Element {
+function Quiz({
+  questions,
+  setStartGame,
+  name,
+  className,
+}: QuizProps): JSX.Element {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<userAnswerInterface[]>([]);
   const context = useContext(GameContext);
 
   async function verifyScores() {
-    fetch("http://localhost:3000/api/score", {
+    fetch("https://music-trivia.onrender.com/api/score", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -58,17 +63,15 @@ function Quiz({ questions, setStartGame, name, className }: QuizProps): JSX.Elem
 
   if (questions.length > 0) {
     return (
-
-        <Question
+      <Question
         question={questions[questionNumber]}
         getNextQuestion={getNextQuestion}
         saveUserAnswer={saveUserAnswer}
       />
-    )
+    );
   } else {
-    return <></>
+    return <></>;
   }
-
 }
 
 export default styled(Quiz)`
