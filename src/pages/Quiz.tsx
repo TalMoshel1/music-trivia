@@ -1,35 +1,23 @@
 import { useEffect, useState, useContext } from "react";
-import reactLogo from "./assets/react.svg";
-import {
-  QuestionInterface,
-  AnswerInterface,
-  userAnswerInterface,
-} from "../interfaces/api";
-import { useNavigate } from "react-router-dom";
+import { QuestionInterface, userAnswerInterface } from "../interfaces/api";
 import Question from "../elements/Question";
-import GameProvider from "../store/gameContext";
 import { GameContext } from "../store/gameContext";
 import styled from "styled-components";
 
-function Quiz({
-  questions,
-  setStartGame,
-  name,
-  className,
-}: {
+interface QuizProps {
   questions: QuestionInterface[];
   setStartGame: (arg: boolean) => void;
   name: string | undefined;
   className?: string;
-}) {
-  const [questionNumber, setQuestionNumber] = useState<number>(0); // 0 - 9
-  const [userAnswers, setUserAnswers] = useState<[] | userAnswerInterface[]>(
-    []
-  );
+}
+
+function Quiz({ questions, setStartGame, name, className }: QuizProps): JSX.Element {
+  const [questionNumber, setQuestionNumber] = useState<number>(0);
+  const [userAnswers, setUserAnswers] = useState<userAnswerInterface[]>([]);
   const context = useContext(GameContext);
 
   async function verifyScores() {
-    fetch("https://music-trivia.onrender.com/api/score", {
+    fetch("http://localhost:3000/api/score", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -43,9 +31,7 @@ function Quiz({
     })
       .then((res) => {
         setQuestionNumber(0);
-        setUserAnswers(() => {
-          return [];
-        });
+        setUserAnswers([]);
         return res.json();
       })
       .then((res) => {
@@ -56,17 +42,12 @@ function Quiz({
   function getNextQuestion() {
     if (questionNumber + 1 <= 8) {
       console.log("question number: ", questionNumber);
-      console.log("thats the mistake");
-      setQuestionNumber((prev: number) => {
-        return prev + 1;
-      });
+      setQuestionNumber((prev: number) => prev + 1);
     }
   }
 
   function saveUserAnswer(userAnswer: userAnswerInterface) {
-    setUserAnswers((prev) => {
-      return [...prev, userAnswer];
-    });
+    setUserAnswers((prev) => [...prev, userAnswer]);
   }
 
   useEffect(() => {
@@ -75,18 +56,19 @@ function Quiz({
     }
   }, [userAnswers]);
 
-  if (questions.length > 0)
+  if (questions.length > 0) {
     return (
-      <div className={className}>
-        {questions.length && (
-          <Question
-            question={questions[questionNumber]}
-            getNextQuestion={getNextQuestion}
-            saveUserAnswer={saveUserAnswer}
-          ></Question>
-        )}
-      </div>
-    );
+
+        <Question
+        question={questions[questionNumber]}
+        getNextQuestion={getNextQuestion}
+        saveUserAnswer={saveUserAnswer}
+      />
+    )
+  } else {
+    return <></>
+  }
+
 }
 
 export default styled(Quiz)`

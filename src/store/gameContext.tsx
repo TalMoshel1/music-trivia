@@ -57,7 +57,7 @@ const GameProvider = ({ children }: { children?: any }) => {
   }
 
   async function getBoardFromDb() {
-    fetch("https://music-trivia.onrender.com/api/score")
+    fetch("http://localhost:3000/api/score") /*http://localhost:3000 */
       .then((res) => {
         return res.json();
       })
